@@ -1,5 +1,4 @@
 @echo off
-title Compiling
 color 0a
 set abc=%1
 set cde="%abc:~1,-1%.apk"

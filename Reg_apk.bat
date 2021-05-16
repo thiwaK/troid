@@ -10,12 +10,26 @@ reg delete "HKCR\jarfile\shell\decompile" /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Classes\.apk" /f /ve /t REG_SZ /d "APKFile"
 reg add "HKLM\SOFTWARE\Classes\APKFile" /f /ve /t REG_SZ /d "Android App"
 reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "FriendlyTypeName" /t REG_SZ /d "Android App"
-reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "EditFlags" /t REG_DWORD /d "00000002"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell" /f /ve /t REG_SZ /d "open"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\open\command" /f /ve /t REG_SZ /d "cmd.exe /c color 1b  && echo.&& echo ================================ && echo installing && echo ================================ &&  echo.&&  echo. &&  echo. &&  echo. && adb install \"%%1\" && ping localhost -n 2 >nul"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "EditFlags" /t REG_DWORD /d "00000002"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell" /f /ve /t REG_SZ /d "open"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\open\command" /f /ve /t REG_SZ /d "cmd.exe /c color 1b  && echo.&& echo ================================ && echo installing && echo ================================ &&  echo.&&  echo. &&  echo. &&  echo. && adb install \"%%1\" && ping localhost -n 2 >nul"
 
 
 ::: Open with list add
+
+reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "SubCommands" /t REG_SZ /d ""
+reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
+reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "MUIVerb" /t REG_SZ /d "Troid"
+
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options1" /f /v "MUIVerb" /t REG_SZ /d "Op 1"
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options1" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
+
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options2" /f /v "MUIVerb" /t REG_SZ /d "Op 2"
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options2" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
+
+
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile" /f /ve /t REG_SZ /d "Open Classes.dex by JD-GUI"
+reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile\command" /f /ve /t REG_SZ /d "\"%~dp0decompile.cmd\" \"%%1\""
 
 reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile" /f /ve /t REG_SZ /d "Open Classes.dex by JD-GUI"
 reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile\command" /f /ve /t REG_SZ /d "\"%~dp0decompile.cmd\" \"%%1\""

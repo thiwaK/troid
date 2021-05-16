@@ -17,6 +17,7 @@
 
 **Troid** depends on multiple third-party binary tools which are included in this repository.
 
+- [JD-GUI 1.6.6](https://github.com/java-decompiler/jd-gui)
 - [apktool 2.3.4](https://ibotpeaches.github.io/Apktool/)
 - [dex2jar 2.0](https://github.com/pxb1988/dex2jar)
 - [7-Zip 9.20](https://www.7-zip.org/)
