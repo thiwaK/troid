@@ -16,26 +16,14 @@ rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\open\command" /f /ve /t REG_SZ 
 
 
 ::: Open with list add
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile" /f /ve /t REG_SZ /d "Open Classes.dex by JD-GUI"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile\command" /f /ve /t REG_SZ /d "\"%~dp0decompile.cmd\" \"%%1\""
 
-reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "SubCommands" /t REG_SZ /d ""
-reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
-reg add "HKLM\SOFTWARE\Classes\APKFile" /f /v "MUIVerb" /t REG_SZ /d "Troid"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Sign" /f /ve /t REG_SZ /d "Sign Apk With Test-key"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Sign\command" /f /ve /t REG_SZ /d "\"%~dp0Sign.bat\" \"%%1\""
 
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options1" /f /v "MUIVerb" /t REG_SZ /d "Op 1"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options1" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
-
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options2" /f /v "MUIVerb" /t REG_SZ /d "Op 2"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Options2" /f /v "Icon" /t REG_EXPAND_SZ /d "%ProgramFiles%\Easy Context Menu\EcMenu.exe,13"
-
-
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile" /f /ve /t REG_SZ /d "Open Classes.dex by JD-GUI"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile\command" /f /ve /t REG_SZ /d "\"%~dp0decompile.cmd\" \"%%1\""
-
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile" /f /ve /t REG_SZ /d "Open Classes.dex by JD-GUI"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\decompile\command" /f /ve /t REG_SZ /d "\"%~dp0decompile.cmd\" \"%%1\""
-
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Sign" /f /ve /t REG_SZ /d "Sign Apk With Test-key"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\Sign\command" /f /ve /t REG_SZ /d "\"%~dp0Sign.bat\" \"%%1\""
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\disassemble" /f /ve /t REG_SZ /d "Decompile"
+rem reg add "HKLM\SOFTWARE\Classes\APKFile\shell\disassemble\command" /f /ve /t REG_SZ /d "\"%~dp0Decompile.bat\" \"%%1\""
 
 
 reg add "HKCR\folder\shell\recompile" /f /ve /t REG_SZ /d "Recompile"
@@ -44,8 +32,6 @@ reg add "HKCR\folder\shell\recompile\command" /f /ve /t REG_SZ /d "\"%~dp0Recomp
 reg add "HKCR\folder\shell\Compress" /f /ve /t REG_SZ /d "Compress APK with Sign"
 reg add "HKCR\folder\shell\Compress\command" /f /ve /t REG_SZ /d "\"%~dp0Compress_APK.bat\" \"%%1\""
 
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\disassemble" /f /ve /t REG_SZ /d "Decompile"
-reg add "HKLM\SOFTWARE\Classes\APKFile\shell\disassemble\command" /f /ve /t REG_SZ /d "\"%~dp0Decompile.bat\" \"%%1\""
 
 
 echo %PROCESSOR_IDENTIFIER% | FIND /i "x86"
