@@ -40,7 +40,7 @@ IF ERRORLEVEL 1 (
 :Start
 cls
 ping localhost -n 3 >nul
-title Troid : Signing APK
+title Troid : Signing APK with Testkey
 echo.============================================
 echo.      Signing ... 
 echo.============================================
@@ -63,11 +63,14 @@ IF ERRORLEVEL 1 (
   exit
 )  
 
-
+set "reply=y"
+set /p "reply=Do you want to install your apk now [y|n]: "
+if /i not "%reply%" == "y" goto :eof
+if /i not "%reply%" == "Y" goto :eof
 
 
 cls
-title Troid : Signing APK
+title Troid : Installing APK
 ping localhost -n 3 >nul
 
 echo. ============================================
