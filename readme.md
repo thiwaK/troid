@@ -2,7 +2,7 @@
 
 # Troid
 
-**Troid** is a powerful tool set that can be used to use modify APK files easily.
+**Troid** is a powerful tool set that can be used to modify APK files easily.
 
 - Donate
 - Issues
