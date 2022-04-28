@@ -6,7 +6,7 @@ cd /d "%~dp0"
 set Folder=%1
 set Out2="%Folder:~1,-5%_Sign.apk"
 
-:Compile
+
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set dayname2=%%d
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set day2=%%f
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set month2=%%e

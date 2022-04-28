@@ -1,7 +1,7 @@
 @echo off
 color 0a
 cd /d "%~dp0"
-java -version >nul 2>&1||echo Error: Java is not found&&echo Please install JRE first &&echo.&&echo Existing..&&pause&&exit
+java -version >nul 2>&1||echo Error: Java is not found&&echo Please install JRE first &&echo.&&echo Existing.. Press any key&&pause&&exit
 
 SET APK=%1
 SET OUT=%temp%\%~n1-dex2jar.jar

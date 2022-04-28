@@ -6,10 +6,13 @@ cd /d "%~dp0"
 set APK=%1
 set CurrentDir="%cd%"
 
-goto Decompile
+
 echo.
-echo. [1] : Compile
-echo. [2] : Decompile
+echo. [1] : Resources + Source
+echo. [2] : Resources Only
+echo. [3] : Source Only
+echo. [4] : Resources Only. Match original
+echo. [5] : Source Only. Match original
 echo.
 echo. ============================
 echo.
@@ -19,13 +22,6 @@ echo.
 set /p _ok= Enter your choice: 
 
 
-IF %_ok%==1 goto Compile
-IF %_ok%==2 goto Decompile
-
-
-
-:: ============================================================================================
-:Decompile
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set dayname2=%%d
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set day2=%%f
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set month2=%%e
@@ -36,13 +32,8 @@ for /f "tokens=1-5 delims=: " %%g in ("%time%") do set sec2=%%i
 cls
 
 
-
-
-
 set Out="%APK:~1,-5%"
 title Troid : Decompiling 
-
-
 
 echo.
 echo.Decompiling : %1
@@ -53,14 +44,41 @@ echo.
 color 0b
 java -jar "%cd%\apktool.jar" if %APK%
 :::java -jar "%cd%\apktool.jar" d -f -p "%cd%\Frameworks" -o %Out% %APK%
+
+
+IF %_ok%==1 goto Decompile1
+IF %_ok%==2 goto Decompile2
+IF %_ok%==3 goto Decompile3
+IF %_ok%==4 goto Decompile4
+IF %_ok%==5 goto Decompile5
+
+
+:Decompile1
 java -jar "%cd%\apktool.jar" d -f -o %Out% %APK%
+goto last
+
+:Decompile2
+java -jar "%cd%\apktool.jar" d -f -s -o %Out% %APK%
+goto last
+
+:Decompile3
+java -jar "%cd%\apktool.jar" d -f -r -o %Out% %APK%
+goto last
+
+:Decompile4
+java -jar "%cd%\apktool.jar" d -f -s -m -o %Out% %APK%
+goto last
+
+:Decompile5
+java -jar "%cd%\apktool.jar" d -f -r -m -o %Out% %APK%
+goto last
+
+:last
 echo.
 echo. Complete : Yes
 echo.
 
-
-
-if exist %Out%\apktool.yml (GOTO DecompileFile_3)
+if exist %Out%\apktool.yml (GOTO Success)
 color 0c
 echo. Success : No
 echo.
@@ -70,7 +88,7 @@ echo.
 log.txt
 pause
 
-:DecompileFile_3
+:Success
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set dayname=%%d
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set day=%%f
 for /f "tokens=1-5 delims=/ " %%d in ("%date%") do set month=%%e
